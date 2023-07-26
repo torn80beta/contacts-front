@@ -1,26 +1,64 @@
 // import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Home from 'pages/home/Home';
+import Register from 'pages/home/register/Register';
+import Login from 'pages/login/Login';
+import NavBar from 'components/navBar/NavBar';
+import Contacts from 'pages/contacts/Contacts';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello world!</h1>
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
-      </header>
-    </div>
+  const Layout = () => {
+    return (
+      <div className="main">
+        <NavBar />
+        {/* <div className="container"> */}
+        <div className="contentContainer">
+          <Outlet />
+        </div>
+        {/* </div> */}
+
+        {/* <Footer /> */}
+      </div>
+    );
+  };
+
+  const router = createBrowserRouter(
+    [
+      {
+        path: '/',
+        element: <Layout />,
+        // loader: rootLoader,
+        children: [
+          {
+            path: '/',
+            element: <Home />,
+            // loader: teamLoader,
+          },
+          {
+            path: '/login',
+            element: <Login />,
+            // loader: teamLoader,
+          },
+          {
+            path: '/register',
+            element: <Register />,
+            // loader: teamLoader,
+          },
+          {
+            path: '/contacts',
+            element: <Contacts />,
+            // loader: teamLoader,
+          },
+        ],
+      },
+    ],
+    {
+      basename: '/contacts-front',
+    }
   );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
