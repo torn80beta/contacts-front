@@ -1,10 +1,13 @@
 import './login.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useUser } from 'userContext';
 
 const Login = () => {
+  const { logIn } = useUser();
+
   return (
     <div>
-      <h1>Any place in your app!</h1>
+      <h1>Login</h1>
 
       <Formik
         initialValues={{ email: '', password: '' }}
@@ -21,11 +24,12 @@ const Login = () => {
 
           return errors;
         }}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-
+            // alert(JSON.stringify(values, null, 2));
+            logIn(values);
             setSubmitting(false);
+            resetForm();
           }, 400);
         }}
       >

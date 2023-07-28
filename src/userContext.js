@@ -9,13 +9,17 @@ export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState(null);
 
-  const logIn = async () => {
-    const userData = await userLogin();
-    const { email } = userData.user;
-    // const { token } = userData;
-    // console.log(token);
-    setIsLoggedIn(true);
-    setUsername(email);
+  const logIn = async inputValues => {
+    try {
+      const userData = await userLogin(inputValues);
+      const { email } = userData.user;
+      // const { token } = userData;
+      // console.log(token);
+      setIsLoggedIn(true);
+      setUsername(email);
+    } catch (error) {
+      return error.message;
+    }
   };
 
   const logOut = () => {

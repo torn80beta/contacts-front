@@ -5,21 +5,15 @@ const api = axios.create({
   //   timeout: 1000,
 });
 
-export const userLogin = async () => {
+export const userLogin = async inputValues => {
   let data;
   try {
-    await api
-      .post(`/users/login`, {
-        email: 'connor.jon@mail.com',
-        password: 'qwerty123',
-      })
-      .then(response => {
-        // console.log(response.data);
-        data = response.data;
-      });
-    // console.log(data);
+    await api.post(`/users/login`, { ...inputValues }).then(response => {
+      data = response.data;
+    });
     return data;
   } catch (error) {
-    console.log(error);
+    const { message } = error.response.data;
+    alert(message);
   }
 };
