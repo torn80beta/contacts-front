@@ -17,6 +17,8 @@ export const UserProvider = ({ children }) => {
       // console.log(token);
       setIsLoggedIn(true);
       setUsername(email);
+      // console.log(userData);
+      localStorage.setItem('user', JSON.stringify(userData.user));
     } catch (error) {
       return error.message;
     }
@@ -25,10 +27,18 @@ export const UserProvider = ({ children }) => {
   const logOut = () => {
     setIsLoggedIn(false);
     setUsername(null);
+    localStorage.removeItem('user');
+  };
+
+  const refreshUser = name => {
+    setIsLoggedIn(true);
+    setUsername(name);
   };
 
   return (
-    <UserContext.Provider value={{ isLoggedIn, username, logIn, logOut }}>
+    <UserContext.Provider
+      value={{ isLoggedIn, username, logIn, logOut, refreshUser }}
+    >
       {children}
     </UserContext.Provider>
   );
