@@ -5,6 +5,7 @@ import Register from 'pages/home/register/Register';
 import Login from 'pages/login/Login';
 import Contacts from 'pages/contacts/Contacts';
 import Layout from 'components/layout/Layout';
+import { NotFound } from 'pages/NotFound/NotFound';
 
 function App() {
   const router = createBrowserRouter(
@@ -35,6 +36,10 @@ function App() {
             // loader: teamLoader,
           },
         ],
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
     {
