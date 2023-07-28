@@ -1,3 +1,6 @@
+@import './variables';
+@import './responsive';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,12 +15,38 @@ code {
     monospace;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
 .theme-light {
-  background-color: white;
-  color: black;
+  background-color: $light-theme-bg;
+  color: $light-theme-color;
 }
 
 .theme-dark {
-  background-color: black;
-  color: white;
+  background-color: $dark-theme-bg;
+  color: $dark-theme-color;
 }

@@ -1,2 +1,14 @@
-.layout {
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
 }

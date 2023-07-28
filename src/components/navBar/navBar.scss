@@ -1,4 +1,31 @@
 .navBar {
   display: flex;
+  justify-content: space-between;
   gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid gray;
+
+  .navigation {
+    display: flex;
+    gap: 20px;
+  }
+
+  .userMenu {
+    display: flex;
+    gap: 20px;
+
+    .user {
+      display: flex;
+      gap: 20px;
+    }
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: rgb(76, 114, 218);
+  }
 }

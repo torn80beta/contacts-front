@@ -1,4 +1,4 @@
-import './App.scss';
+// import './App.scss';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from 'pages/home/Home';
 import Register from 'pages/home/register/Register';
