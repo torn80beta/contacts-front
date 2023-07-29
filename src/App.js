@@ -9,6 +9,7 @@ import { RestrictedRoute } from 'RestrictedRoute';
 import { useEffect } from 'react';
 import { useUser } from 'userContext';
 import { RegistrationSuccess } from 'pages/registrationSuccess/RegistrationSuccess';
+import { PrivateRoute } from 'PrivateRoute';
 
 function App() {
   const { refreshUser } = useUser();
@@ -58,7 +59,9 @@ function App() {
           },
           {
             path: '/contacts',
-            element: <Contacts />,
+            element: (
+              <PrivateRoute redirectTo="/login" component={<Contacts />} />
+            ),
             // loader: teamLoader,
           },
           {

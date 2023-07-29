@@ -9,6 +9,7 @@ export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState(null);
   const [isVerified, setIsVerified] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const logIn = async inputValues => {
     try {
@@ -49,10 +50,12 @@ export const UserProvider = ({ children }) => {
         isLoggedIn,
         username,
         isVerified,
+        isRefreshing,
         logIn,
         logOut,
         refreshUser,
         verify,
+        setIsRefreshing,
       }}
     >
       {children}
