@@ -8,6 +8,7 @@ export const useUser = () => useContext(UserContext);
 export const UserProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState(null);
+  const [isVerified, setIsVerified] = useState(false);
 
   const logIn = async inputValues => {
     try {
@@ -17,7 +18,6 @@ export const UserProvider = ({ children }) => {
       // console.log(token);
       setIsLoggedIn(true);
       setUsername(email);
-      // console.log(userData);
       localStorage.setItem('user', JSON.stringify(userData.user));
     } catch (error) {
       return error.message;
@@ -35,9 +35,25 @@ export const UserProvider = ({ children }) => {
     setUsername(name);
   };
 
+  const verify = async newUser => {
+    setIsVerified(true);
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ ...newUser, isVerified: true })
+    );
+  };
+
   return (
     <UserContext.Provider
-      value={{ isLoggedIn, username, logIn, logOut, refreshUser }}
+      value={{
+        isLoggedIn,
+        username,
+        isVerified,
+        logIn,
+        logOut,
+        refreshUser,
+        verify,
+      }}
     >
       {children}
     </UserContext.Provider>

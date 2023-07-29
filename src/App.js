@@ -1,13 +1,14 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from 'pages/home/Home';
-import Register from 'pages/home/register/Register';
+import Register from 'pages/register/Register';
 import Login from 'pages/login/Login';
 import Contacts from 'pages/contacts/Contacts';
 import Layout from 'components/layout/Layout';
-import { NotFound } from 'pages/NotFound/NotFound';
+import { NotFound } from 'pages/notFound/NotFound';
 import { RestrictedRoute } from 'RestrictedRoute';
 import { useEffect } from 'react';
 import { useUser } from 'userContext';
+import { RegistrationSuccess } from 'pages/registrationSuccess/RegistrationSuccess';
 
 function App() {
   const { refreshUser } = useUser();
@@ -48,7 +49,7 @@ function App() {
             path: '/register',
             element: (
               <RestrictedRoute
-                redirectTo="/contacts"
+                redirectTo="/registrationSuccess"
                 component={<Register />}
               />
             ),
@@ -58,6 +59,11 @@ function App() {
           {
             path: '/contacts',
             element: <Contacts />,
+            // loader: teamLoader,
+          },
+          {
+            path: '/registrationSuccess',
+            element: <RegistrationSuccess />,
             // loader: teamLoader,
           },
         ],

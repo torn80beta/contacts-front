@@ -17,3 +17,16 @@ export const userLogin = async inputValues => {
     alert(message);
   }
 };
+
+export const userRegister = async inputValues => {
+  let data;
+  try {
+    await api.post('/users/register', { ...inputValues }).then(response => {
+      data = response.data;
+    });
+    return data;
+  } catch (error) {
+    const { message } = error.response.data;
+    alert(message);
+  }
+};
