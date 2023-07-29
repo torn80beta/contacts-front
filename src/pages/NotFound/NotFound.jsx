@@ -1,7 +1,7 @@
 import './notFound.scss';
 import { BackLink } from 'components/backLink/BackLink';
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <>
       <BackLink to={{ pathname: '/' }}>Back to Homepage</BackLink>
@@ -9,3 +9,5 @@ export const NotFound = () => {
     </>
   );
 };
+
+export default NotFound;

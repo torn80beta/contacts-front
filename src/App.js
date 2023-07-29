@@ -4,7 +4,7 @@ import Register from 'pages/register/Register';
 import Login from 'pages/login/Login';
 import Contacts from 'pages/contacts/Contacts';
 import Layout from 'components/layout/Layout';
-import { NotFound } from 'pages/notFound/NotFound';
+import NotFound from 'pages/notFound/NotFound';
 import { RestrictedRoute } from 'RestrictedRoute';
 import { useEffect } from 'react';
 import { useUser } from 'userContext';
